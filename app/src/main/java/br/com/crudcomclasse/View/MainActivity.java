@@ -1,11 +1,15 @@
 package br.com.crudcomclasse.View;
 
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.net.URL;
 import java.util.List;
 
 import br.com.crudcomclasse.Controller.ContatoController;
@@ -16,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnCriarContato;
     TextView tvNumContatos;
+
+    String nome="";
+    String cidade="";
+
+    URL url = new URL("https://api.github.com/users/andreivupt");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +39,43 @@ public class MainActivity extends AppCompatActivity {
         contadorDeRegistros();
         atualizarContatos();
     }
+
+    private void AsynPutData() {
+        try {
+            new SalvarDados(nome, cidade).execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private class SalvarDados
+            extends AsyncTask {
+
+        String nome = null;
+        String cidade = null;
+        Uri.Builder builder;
+
+        public SalvarDados(String nome, String cidade) {
+
+            this.nome = nome;
+                this.cidade = cidade;
+
+                builder = new Uri.Builder();
+
+                builder.appendQueryParameter("key", "conteudo");
+                builder.appendQueryParameter("nome", nome);
+                builder.appendQueryParameter("cidade", cidade);
+            }
+
+
+
+        @Override
+        protected Object doInBackground(Object[] params) {
+            return null;
+        }
+    }
+
 
     private void atualizarContatos() {
 
@@ -72,4 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
         tvNumContatos.setText(strCont);
     }
+
+
 }
