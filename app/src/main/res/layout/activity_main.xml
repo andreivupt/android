@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.crudcomclasse.View.MainActivity">
+
+    <TextView
+        android:id="@+id/tvProjeto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Projeto Crud" />
+
+    <Button
+        android:id="@+id/btnCriarContato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProjeto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:text="Adicionar" />
+
+    <TextView
+        android:id="@+id/tvContContatos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnCriarContato"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:text="Registros" />
+
+    <ScrollView
+        android:id="@+id/svContatos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvContContatos"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp">
+
+        <LinearLayout
+            android:id="@+id/llContatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:orientation="vertical" />
+    </ScrollView>
+</RelativeLayout>
